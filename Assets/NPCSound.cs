@@ -6,7 +6,6 @@ public class NPCSound : MonoBehaviour
     
     void Start()
     {
-        // Просто инициализация
     }
     
     void OnMouseDown()
