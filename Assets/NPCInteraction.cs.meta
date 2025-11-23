@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public class NPCInteraction : MonoBehaviour
+{
+    public AudioClip interactionSound;
+    private AudioSource audioSource;
+    
+    void Start()
+    {
+        // Получаем компонент AudioSource
+        audioSource = GetComponent<AudioSource>();
+        
+        // Если AudioSource нет - добавляем
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
+    
+    // Этот метод вызывается при нажатии на объект
+    void OnMouseDown()
+    {
+        PlaySound();
+    }
+    
+    void PlaySound()
+    {
+        // Проверяем что звук установлен
+        if (interactionSound != null)
+        {
+            // Воспроизводим звук
+            audioSource.PlayOneShot(interactionSound);
+            Debug.Log("Звук воспроизведен!");
+        }
+        else
+        {
+            Debug.LogWarning("Добавьте звуковой файл в NPC!");
+        }
+    }
+}
